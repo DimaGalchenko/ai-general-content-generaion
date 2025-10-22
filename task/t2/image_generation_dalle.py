@@ -51,3 +51,14 @@ class Quality:
 #   - Use /v1/images/generations endpoint
 #   - The link with generated image will be returned in response
 
+client = OpenAIClient(
+    endpoint=f"{OPENAI_HOST}/v1/images/generations"
+)
+
+client.call(
+    model="dall-e-3",
+    prompt="smiling catdog",
+    size="1024x1024",
+    style="vivid",
+    quality="hd"
+)

@@ -42,3 +42,16 @@ class Voice:
     sage: str = 'sage'
     shimmer: str = 'shimmer'
 
+with open('result.mp3', 'wb') as audio_file:
+    audio_file.write(requests.post(
+        f'{OPENAI_HOST}/v1/audio/speech',
+        headers={
+            'Authorization': f'Bearer {OPENAI_API_KEY}',
+        },
+        json={
+            'model': "gpt-4o-mini-tts",
+            "input": "Why can't we say that black is white?",
+            "voice": "coral",
+            "instructions": "Speak in a cheerful and positive tone."
+        }
+    ).content)
